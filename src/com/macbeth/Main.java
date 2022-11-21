@@ -2,6 +2,7 @@ package com.macbeth;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -14,12 +15,40 @@ public class Main {
     System.out.println("██      ██ ██   ██  ██████ ██████  ███████    ██    ██   ██ ");
     System.out.println();
 
-    // Scanner sc = new Scanner(new File("lines.txt"));
-    // System.out.println(sc.nextLine());
+		ArrayList<Character> characters = new ArrayList<>();
+    Scanner fs = new Scanner(new File("lines.txt"));
+		while(fs.hasNextLine()) {
+			String line = fs.nextLine();
+			String characterName = line.substring(line.indexOf("\t"));
+			String characterLine = line.substring(0, line.indexOf("\t"));
+			
+			boolean isInArray = false;
+			for (Character character : characters) {
+				if (character.getName().equals(characterName)) {
+					character.addLine(characterLine);
+					isInArray = true;
+				}
+			}
 
-    int mode = 0; // 0 is moon mode, 1 is regular
+			if (!isInArray) {
+				characters.add(new Character(characterName));
+				characters.get(characters.size()-1).addLine(characterLine);
+			}
+		}
+
+		fs.close();
+
+		Scanner sc = new Scanner(System.in);
+
+    int mode = 0; // 0 is mooney mode, 1 is regular
     System.out.println("Which mode would you like to try?");
-    
+		System.out.println("0: Mooney Mode (Only the one true Mooney can succeed at this)");
+		System.out.println("1: Regular Mode (Easy)");
+		System.out.print(": ");
+		mode = sc.nextInt();
 
+		System.out.println(mode);
+    
+		sc.close();
   }
 }
