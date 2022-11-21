@@ -18,7 +18,7 @@ public class Character {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void addLine(String line) {
 		lines.add(line);
 	}
