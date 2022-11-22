@@ -15,16 +15,16 @@ public class Main {
 		System.out.println("██      ██ ██   ██  ██████ ██████  ███████    ██    ██   ██ ");
 		System.out.println();
 
-		int totalLines = 0;
+		double totalLines = 0;
+		double correctLines = 0;
 
 		ArrayList<Character> characters = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
 		Scanner fs = new Scanner(new File("lines.txt"));
 		while (fs.hasNextLine()) {
 			String line = fs.nextLine();
-			String characterName = line.substring(line.indexOf("\t"));
-			String characterLine = line.substring(0, line.indexOf("\t"));
-
-			totalLines++;
+			String characterName = line.substring(line.indexOf("\t")+1).trim();
+			String characterLine = line.substring(0, line.indexOf("\t")).trim();
 
 			boolean isInArray = false;
 			for (Character character : characters) {
@@ -37,6 +37,7 @@ public class Main {
 			if (!isInArray) {
 				characters.add(new Character(characterName));
 				characters.get(characters.size() - 1).addLine(characterLine);
+				names.add(characterName);
 			}
 		}
 
@@ -51,18 +52,66 @@ public class Main {
 		System.out.print(": ");
 		mode = sc.nextInt();
 
-		switch (mode) {
-			case 0:
+		if (mode != 0 && mode != 1) {
+			System.out.println("Sorry, invalid mode!");
+			sc.close();
+			return;
+		}
+		
+		System.out.println();
+		System.out.println("To exit, type \"exit\"!");
+		System.out.println();
 
-				break;
-			case 1:
+		sc.nextLine();
 
-				break;
-			default:
-				System.out.println("Sorry, invalid mode!");
-				break;
+		while(characters.size() > 0) {
+			int characterIndex = (int) (Math.random() * characters.size());
+			Character randomCharacter = characters.get(characterIndex);
+			String randomQuote = randomCharacter.getLines().remove((int) (Math.random() * randomCharacter.getLines().size()));
+
+			if (randomCharacter.getLines().size() == 0) {
+				characters.remove(characterIndex);
+			}
+
+			ArrayList<String> randomNames = new ArrayList<>();
+			if (mode == 1) {
+				randomNames.add(randomCharacter.getName());
+				randomNames.add(names.get((int) (Math.random() * names.size())));
+				randomNames.add(names.get((int) (Math.random() * names.size())));
+				randomNames.add(names.get((int) (Math.random() * names.size())));
+			}
+
+			System.out.println("___ said \"" + randomQuote + "\"");
+			if (mode == 1) {
+			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));}
+			System.out.print(": ");
+			String answer = sc.nextLine();
+
+			System.out.println();
+
+			if(answer.equals("exit")) {
+				System.out.println("——————————————————————————————");
+				System.out.println("Results: " + ((correctLines / totalLines) * 100) + "% Correct!"); // theres some error here
+				sc.close();
+				return;
+			}
+
+			totalLines++;
+
+			if (answer.equals(randomCharacter.getName())) {
+				System.out.println("Yay! correct!");
+				correctLines++;
+			} else {
+				System.out.println("Oh no, that is wrong...");
+			}
+			System.out.println();
 		}
 
+		System.out.println("——————————————————————————————");
+		System.out.println("Results: " + Math.round(((double) correctLines) / totalLines) + "% Correct!");
 		sc.close();
 	}
 }
