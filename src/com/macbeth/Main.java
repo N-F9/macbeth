@@ -23,7 +23,7 @@ public class Main {
 		Scanner fs = new Scanner(new File("lines.txt"));
 		while (fs.hasNextLine()) {
 			String line = fs.nextLine();
-			String characterName = line.substring(line.indexOf("\t")+1).trim();
+			String characterName = line.substring(line.indexOf("\t") + 1).trim();
 			String characterLine = line.substring(0, line.indexOf("\t")).trim();
 
 			boolean isInArray = false;
@@ -57,14 +57,14 @@ public class Main {
 			sc.close();
 			return;
 		}
-		
+
 		System.out.println();
 		System.out.println("To exit, type \"exit\"!");
 		System.out.println();
 
 		sc.nextLine();
 
-		while(characters.size() > 0) {
+		while (characters.size() > 0) {
 			int characterIndex = (int) (Math.random() * characters.size());
 			Character randomCharacter = characters.get(characterIndex);
 			String randomQuote = randomCharacter.getLines().remove((int) (Math.random() * randomCharacter.getLines().size()));
@@ -83,18 +83,19 @@ public class Main {
 
 			System.out.println("___ said \"" + randomQuote + "\"");
 			if (mode == 1) {
-			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
-			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
-			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
-			System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));}
+				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
+			}
 			System.out.print(": ");
 			String answer = sc.nextLine();
 
 			System.out.println();
 
-			if(answer.equals("exit")) {
+			if (answer.equals("exit")) {
 				System.out.println("——————————————————————————————");
-				System.out.println("Results: " + ((correctLines / totalLines) * 100) + "% Correct!"); // theres some error here
+				System.out.println("Results: " + Math.round(((correctLines / totalLines) * 100)) + "% Correct!");
 				sc.close();
 				return;
 			}
@@ -111,7 +112,7 @@ public class Main {
 		}
 
 		System.out.println("——————————————————————————————");
-		System.out.println("Results: " + Math.round(((double) correctLines) / totalLines) + "% Correct!");
+		System.out.println("Results: " + Math.round(((correctLines / totalLines) * 100)) + "% Correct!");
 		sc.close();
 	}
 }
