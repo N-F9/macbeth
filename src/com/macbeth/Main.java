@@ -93,7 +93,7 @@ public class Main {
 
 			System.out.println();
 
-			if (answer.equals("exit")) {
+			if (answer.toLowerCase().equals("exit")) {
 				System.out.println("——————————————————————————————");
 				System.out.println("Results: " + Math.round(((correctLines / totalLines) * 100)) + "% Correct!");
 				sc.close();
@@ -102,7 +102,7 @@ public class Main {
 
 			totalLines++;
 
-			if (answer.equals(randomCharacter.getName())) {
+			if (answer.toLowerCase().equals(randomCharacter.getName().toLowerCase())) {
 				System.out.println("Yay! correct!");
 				correctLines++;
 			} else {
