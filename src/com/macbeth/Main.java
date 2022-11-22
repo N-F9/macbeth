@@ -78,12 +78,10 @@ public class Main {
 				randomNames.add(randomCharacter.getName());
 				randomNames.add(names.get((int) (Math.random() * names.size())));
 				randomNames.add(names.get((int) (Math.random() * names.size())));
-				randomNames.add(names.get((int) (Math.random() * names.size())));
 			}
 
 			System.out.println("___ said \"" + randomQuote + "\"");
 			if (mode == 1) {
-				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
 				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
 				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
 				System.out.println(randomNames.remove((int) (Math.random() * randomNames.size())));
