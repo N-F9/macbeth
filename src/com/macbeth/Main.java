@@ -45,7 +45,7 @@ public class Main {
 
 		Scanner sc = new Scanner(System.in);
 
-		int mode = 0; // 0 is mooney mode, 1 is regular
+		int mode = 0;
 		System.out.println("Which mode would you like to try?");
 		System.out.println("0: Mooney Mode (Only the one true Mooney can succeed at this)");
 		System.out.println("1: Regular Mode (Easy)");
