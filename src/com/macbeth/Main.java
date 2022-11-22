@@ -104,7 +104,7 @@ public class Main {
 				System.out.println("Yay! correct!");
 				correctLines++;
 			} else {
-				System.out.println("Oh no, that is wrong...");
+				System.out.println("Oh no, that is wrong... The correct answer is " + randomCharacter.getName());
 			}
 			System.out.println();
 		}
