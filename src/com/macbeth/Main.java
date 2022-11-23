@@ -59,7 +59,7 @@ public class Main {
 		}
 
 		System.out.println();
-		System.out.println("To exit, type \"exit\"!");
+		System.out.println("To exit, type \"exit\". Answers are not case-sensitive.");
 		System.out.println();
 
 		sc.nextLine();
