@@ -15,8 +15,8 @@ public class Main {
 		System.out.println("██      ██ ██   ██  ██████ ██████  ███████    ██    ██   ██ ");
 		System.out.println();
 
-		double totalLines = 0;
-		double correctLines = 0;
+		int totalLines = 0;
+		int correctLines = 0;
 
 		ArrayList<Character> characters = new ArrayList<>();
 		ArrayList<String> names = new ArrayList<>();
@@ -93,7 +93,7 @@ public class Main {
 
 			if (answer.toLowerCase().equals("exit")) {
 				System.out.println("——————————————————————————————");
-				System.out.println("Results: " + Math.round(((correctLines / totalLines) * 100)) + "% Correct!");
+				System.out.println("Results: " + Math.round((((double) correctLines / (double) totalLines) * 100)) + "% Correct! With " + correctLines + " out of " + totalLines + "!");
 				sc.close();
 				return;
 			}
@@ -110,7 +110,7 @@ public class Main {
 		}
 
 		System.out.println("——————————————————————————————");
-		System.out.println("Results: " + Math.round(((correctLines / totalLines) * 100)) + "% Correct!");
+		System.out.println("Results: " + Math.round((((double) correctLines / (double) totalLines) * 100)) + "% Correct! With " + correctLines + " out of " + totalLines + "!");
 		sc.close();
 	}
 }
